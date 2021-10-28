@@ -2,6 +2,7 @@ FROM golang:alpine3.14 as build
 
 WORKDIR /go/src
 COPY /go .
+RUN go build hello.go
 
 FROM scratch
 COPY --from=build /go/src/ /
