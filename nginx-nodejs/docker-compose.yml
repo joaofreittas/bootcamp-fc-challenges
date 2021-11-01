@@ -22,11 +22,10 @@ services:
       context: node
     container_name: nodejs
     entrypoint: dockerize -wait tcp://db-mysql:3306 -timeout 20s docker-entrypoint.sh
+    user: root
     command: node index.js
     networks:
       - nodenet
-    volumes:
-      - ./node:/usr/src/app
     tty: true
     depends_on:
       - db-mysql
