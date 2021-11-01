@@ -3,12 +3,12 @@ version: '3'
 services:
   db-mysql:
     image: mysql:5.7
-    command: --innodb-use-native-aio=0
     container_name: db-mysql
     restart: always
     tty: true
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./mysql/db:/var/lib/mysql
+      - ./mysql/initdb:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=joao
